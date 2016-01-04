@@ -50,6 +50,18 @@ class Node(object):
         if self.right:
             self.right.print_preorder()
 
+    def array_preorder( self ) :
+        nodes = []
+        if self.item :
+            nodes.append( self.item ) # adds only one value
+
+        if self.left:
+            nodes.extend( self.left.array_preorder() ) # adds value from iterable
+
+        if self.right:
+            nodes.extend( self.right.array_preorder() ) # adds value from iterable
+        return nodes
+
 class BST(object) :
     def __init__(self):
         self.root = None
@@ -67,6 +79,10 @@ class BST(object) :
     def _print_preorder(self):
         if self.root:
             self.root.print_preorder()
+
+    def _array_preorder( self ):
+        if self.root:
+            return self.root.array_preorder();
 
 if __name__ == "__main__":
     bst = BST()
